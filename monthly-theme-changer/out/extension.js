@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.activate = activate;
+exports.deactivate = deactivate;
+const vscode = require("vscode");
+function activate(context) {
+    const config = vscode.workspace.getConfiguration("workbench");
+    const today = new Date();
+    const month = today.getMonth(); // Décembre = 11
+    const xmasTheme = "Cozy Christmas"; // Ton thème Noël
+    const normalTheme = "GitHub Dark"; // Ton thème normal
+    // Pour t'afficher le mois dans la console :
+    const monthNames = [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ];
+    console.log(`🎄 Theme Switcher → On est en : ${monthNames[month]}`);
+    if (month === 11) {
+        console.log("👉 Décembre détecté : activation du thème Cozy Christmas");
+        config.update("colorTheme", xmasTheme, vscode.ConfigurationTarget.Global);
+    }
+    else {
+        console.log("👉 Pas décembre : activation du thème normal GitHub Dark");
+        config.update("colorTheme", normalTheme, vscode.ConfigurationTarget.Global);
+    }
+}
+function deactivate() { }
+//# sourceMappingURL=extension.js.map
