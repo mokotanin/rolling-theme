@@ -4,20 +4,26 @@ export function activate(context: vscode.ExtensionContext) {
     const config = vscode.workspace.getConfiguration("workbench");
 
     const today = new Date();
-    const month = today.getMonth(); // décembre = 11
+    const month = today.getMonth(); // Décembre = 11
 
-    const xmasTheme = "Christmas Theme";     // MET TON NOM DE THEME DE NOEL EXACT
-    const normalTheme = "Default Dark+";     // MET TON THEME NORMAL
+    const xmasTheme = "Cozy Christmas";   // Ton thème Noël
+    const normalTheme = "GitHub Dark";    // Ton thème normal
+
+    // Pour t'afficher le mois dans la console :
+    const monthNames = [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ];
+
+    console.log(`🎄 Theme Switcher → On est en : ${monthNames[month]}`);
 
     if (month === 11) {
-        // On est en décembre
+        console.log("👉 Décembre détecté : activation du thème Cozy Christmas");
         config.update("colorTheme", xmasTheme, vscode.ConfigurationTarget.Global);
     } else {
-        // Pas décembre
+        console.log("👉 Pas décembre : activation du thème normal GitHub Dark");
         config.update("colorTheme", normalTheme, vscode.ConfigurationTarget.Global);
     }
-
-    console.log("Theme switcher Noël activé.");
 }
 
 export function deactivate() {}
