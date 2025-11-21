@@ -11,17 +11,17 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Pour t'afficher le mois dans la console :
     const monthNames = [
-        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
     ];
 
-    console.log(`🎄 Theme Switcher → On est en : ${monthNames[month]}`);
+    console.log(`We are in : ${monthNames[month]}`);
 
     if (month === 11) {
-        console.log("👉 Décembre détecté : activation du thème Cozy Christmas");
+        console.log("We are in december: activating Cozy Christmas theme");
         config.update("colorTheme", xmasTheme, vscode.ConfigurationTarget.Global);
     } else {
-        console.log("👉 Pas décembre : activation du thème normal GitHub Dark");
+        console.log("Not december: activating normal GitHub Dark theme");
         config.update("colorTheme", normalTheme, vscode.ConfigurationTarget.Global);
     }
 }
